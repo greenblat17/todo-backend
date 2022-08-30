@@ -30,7 +30,7 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private Set<Role> roles;
 
 }

@@ -27,15 +27,15 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_role",
-            schema = "todolist",
-            catalog = "postgres",
-            joinColumns = @JoinColumn(name = "user_id", updatable = false),
-            inverseJoinColumns = @JoinColumn(name = "role_id", updatable = false)
-    )
-    Set<User> users;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "user_role",
+//            schema = "todolist",
+//            catalog = "postgres",
+//            joinColumns = @JoinColumn(name = "user_id", updatable = false),
+//            inverseJoinColumns = @JoinColumn(name = "role_id", updatable = false)
+//    )
+//    Set<User> users;
 
     @Override
     public String toString() {

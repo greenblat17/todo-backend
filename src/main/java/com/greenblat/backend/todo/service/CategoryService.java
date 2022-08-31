@@ -5,6 +5,8 @@ import com.greenblat.backend.todo.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 public class CategoryService {
@@ -17,5 +19,9 @@ public class CategoryService {
 
     public Category findById(Long id) {
         return categoryRepository.findById(id).get();
+    }
+
+    public List<Category> findAll(String email) {
+        return categoryRepository.findByUserEmailOrderByTitleAsc(email);
     }
 }

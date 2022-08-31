@@ -34,9 +34,6 @@ public class Category {
     @Column(name = "completed_count", updatable = false)
     private Long completedCount;
 
-    @OneToMany(mappedBy = "category")
-    private List<Task> tasks;
-
     @ManyToOne
     @JoinColumn(referencedColumnName = "id", name = "user_id")
     private User user;

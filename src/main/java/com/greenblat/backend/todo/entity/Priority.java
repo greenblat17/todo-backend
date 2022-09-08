@@ -1,5 +1,6 @@
 package com.greenblat.backend.todo.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class Priority {
     @Column(name = "color")
     private String color;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

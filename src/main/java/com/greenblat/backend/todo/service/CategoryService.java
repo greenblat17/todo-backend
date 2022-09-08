@@ -17,11 +17,30 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public Category findById(Long id) {
+    public Category getById(Long id) {
         return categoryRepository.findById(id).get();
     }
 
     public List<Category> findAll(String email) {
         return categoryRepository.findByUserEmailOrderByTitleAsc(email);
+    }
+
+    public List<Category> findByTitle(String title, String email) {
+        return categoryRepository.findByTitle(email, title);
+    }
+
+    @Transactional
+    public Category addCategory(Category category) {
+        return categoryRepository.save(category);
+    }
+
+    @Transactional
+    public void updateCategory(Category category) {
+        categoryRepository.save(category);
+    }
+
+    @Transactional
+    public void deleteCategory(Long id) {
+        categoryRepository.deleteById(id);
     }
 }

@@ -1,6 +1,8 @@
 package com.greenblat.backend.todo.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,15 +29,16 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "user_role",
-//            schema = "todolist",
-//            catalog = "postgres",
-//            joinColumns = @JoinColumn(name = "user_id", updatable = false),
-//            inverseJoinColumns = @JoinColumn(name = "role_id", updatable = false)
-//    )
-//    Set<User> users;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            schema = "todolist",
+            catalog = "postgres",
+            joinColumns = @JoinColumn(name = "user_id", updatable = false),
+            inverseJoinColumns = @JoinColumn(name = "role_id", updatable = false)
+    )
+    Set<User> users;
 
     @Override
     public String toString() {
